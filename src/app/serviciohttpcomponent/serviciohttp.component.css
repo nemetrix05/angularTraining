@@ -3,3 +3,6 @@ h2{
     padding:10px;
     border-bottom:1px solid #ccc;
 }
+.setul{
+    list-style: none;
+}

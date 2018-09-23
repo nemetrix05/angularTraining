@@ -1,1 +1,36 @@
 <h2>{{componentTitle}}</h2>
+<!--En algunos casos las peticiones demoran en cargar, para eso usamos una condicional y mostramos un preload-->
+
+<div *ngIf="datos">
+        <h2>Cargando el api en un select</h2>
+        <select [(ngModel)]="selected" (change)="cambio(selected)">
+            <option selected value="">Seleccionar ...</option>
+            <option *ngFor="let datolocal of datosLocal" value="{{datolocal.Carro}}">
+                {{datolocal.Carro}}
+            </option>
+        </select>
+</div>
+
+<span>Valor seleccionado select <strong>{{selected}}</strong></span>
+
+<div *ngIf="selected == 'BMW' ">
+    <h4 style="color:red;background:#ccc;"> Muestra si es BMW </h4>
+</div>
+
+<ul *ngIf="datos">
+    <!-- 
+        - Aqui llamamos los datos envocados en el servicio con la propiedad datos que guarda los objetos
+        - 
+    -->
+    <li 
+    *ngFor="let dato of datos" 
+    [ngClass]="{
+        setul: datos
+    }">
+        <strong>{{dato.id}}</strong> - {{dato.title}}
+    </li>
+</ul>
+
+
+<span *ngIf="!datos">Cargando datos ...</span>
+

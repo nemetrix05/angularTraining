@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// Necesario para hacer las peticiones por get HTTP
+import { HttpModule } from '@angular/http';
 // Para trabajar con el two ways data binding
 import { FormsModule } from '@angular/forms';
 
@@ -20,7 +22,8 @@ import { httpRequest } from './serviciohttpcomponent/serviciohttp.component';
   imports: [
     // En imports se llama la clase del componente forms que hace cambios reactivos sobre la aplicacion
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
