@@ -1,0 +1,71 @@
+<hr>
+<h2>EJERCICIO - Directivas con NG CLASS</h2>
+
+<div [ngStyle]="{
+    'height':'450px',
+    'border':'2px solid #ccc'
+}">
+
+<!--
+    Usando el ngclass siempre en funcion de una condicion
+    se encierra cana una en un objeto
+    * Forma de poner una clase fija en modo objeto
+    propiedad: 1 == 1
+-->
+
+<h3 [ngClass]="{
+    objeto: color == 'red',
+    fija: 1 == 1
+}" >Usando el ngclass en funcion de un elemento</h3>
+
+<hr>
+
+<!-- cada clase la guardaremos en una array
+['clase1', 'otra', '.....']
+-->
+
+<h3 [ngClass]="['refija','refija2']" >Usando el ngclass con clase fija</h3>
+
+</div>
+
+
+<!--Modificar de forma bidireccional-->
+<hr>
+<h2 [ngStyle]="{ 'color':'green' }">EJERCICIO - Directiva NG CLASS en atributo</h2>
+<!--
+    1. Siempre la directiva por atributo [style.propiedad] tendra mas relevancia sobre la de clase
+    2. Para definir la directiva de clase usamos [class.nombreclase] = "condicion para quese aplique, por ejemplo color==azul"
+-->
+<div [class.changeorg]= "color == 'pink'">
+SI ES ROSADO
+</div>
+
+
+<hr>
+<h2 [ngStyle]="{ 'color':'green' }">EJERCICIO - Directiva NG STYLE EN ATRIBUTO</h2>
+
+<!--
+    1. Podemos usar la directiva ngStyle como atributo
+    2. entre llaves definimos la propiedad css [style.propiedad]
+    3. Le hacemos una condicion, color == 'blue' ?(entonces) 'valor de la propiedad css'
+    4. Si esa condicion no se cumple podemos agregar un valor por defecto como un else :
+-->
+
+<div [style.border]="color == 'green' ? '10px solid black' : '1px solid #ccc'">
+    <p>Si el color es: <strong>{{color}}</strong> Muestre el borde negro</p>
+</div>
+
+<hr>>
+<h2 [ngStyle]="{ 'color':'green' }">EJERCICIO - TWO WAYS DATA BLINDIND</h2>
+
+<input type="text" [(ngModel)]="color">
+
+<div *ngIf="color" [ngStyle]="{
+    'background':color,
+    'width':'250px',
+    'height':'250px',
+    'margin':'20px 0'
+}"></div>
+
+<div>El actual es: {{color}}</div>
+<button type="button" (click)="showcon()">Mostrar en consola</button>
